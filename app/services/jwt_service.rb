@@ -1,5 +1,5 @@
 class JwtService
-  SECRET_KEY = Rails.application.credentials.secret_key_base || ENV['JWT_SECRET_KEY']
+  SECRET_KEY = Rails.application.credentials.secret_key_base || ENV["JWT_SECRET_KEY"]
 
   def self.encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i

@@ -1,16 +1,16 @@
 class Api::V1::UserIngredientsController < ApplicationController
-  before_action :set_user_ingredient, only: [:show, :update, :destroy]
+  before_action :set_user_ingredient, only: [ :show, :update, :destroy ]
 
   def index
     @user_ingredients = current_user.user_ingredients.includes(:ingredient)
-    
+
     # 利用可能な食材のみフィルタ
-    if params[:available] == 'true'
+    if params[:available] == "true"
       @user_ingredients = @user_ingredients.available
     end
-    
+
     # 期限切れ近い食材のみフィルタ
-    if params[:expiring_soon] == 'true'
+    if params[:expiring_soon] == "true"
       @user_ingredients = @user_ingredients.expiring_soon
     end
 
@@ -19,11 +19,11 @@ class Api::V1::UserIngredientsController < ApplicationController
 
   def create
     @user_ingredient = current_user.user_ingredients.build(user_ingredient_params)
-    
+
     if @user_ingredient.save
       render json: {
         user_ingredient: user_ingredient_json(@user_ingredient),
-        message: '食材を追加しました'
+        message: "食材を追加しました"
       }, status: :created
     else
       render json: { errors: @user_ingredient.errors.full_messages }, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class Api::V1::UserIngredientsController < ApplicationController
     if @user_ingredient.update(user_ingredient_params)
       render json: {
         user_ingredient: user_ingredient_json(@user_ingredient),
-        message: '食材を更新しました'
+        message: "食材を更新しました"
       }
     else
       render json: { errors: @user_ingredient.errors.full_messages }, status: :unprocessable_entity
@@ -43,7 +43,7 @@ class Api::V1::UserIngredientsController < ApplicationController
 
   def destroy
     @user_ingredient.destroy
-    render json: { message: '食材を削除しました' }
+    render json: { message: "食材を削除しました" }
   end
 
   private

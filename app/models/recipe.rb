@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
   serialize :nutritional_info, type: Hash, coder: JSON
 
   # スコープ
-  scope :leftover_only, -> { where(recipe_type: 'leftover_only') }
-  scope :balanced, -> { where(recipe_type: 'balanced') }
+  scope :leftover_only, -> { where(recipe_type: "leftover_only") }
+  scope :balanced, -> { where(recipe_type: "balanced") }
   scope :recent, -> { order(created_at: :desc) }
 end

@@ -1,15 +1,15 @@
 class Api::V1::AuthController < ApplicationController
-  skip_before_action :authorize_request, only: [:signup, :login]
+  skip_before_action :authorize_request, only: [ :signup, :login ]
 
   def signup
     user = User.new(user_params)
-    
+
     if user.save
       token = JwtService.encode(user_id: user.id)
       render json: {
         user: user_response(user),
         token: token,
-        message: 'ユーザー登録が完了しました'
+        message: "ユーザー登録が完了しました"
       }, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -24,10 +24,10 @@ class Api::V1::AuthController < ApplicationController
       render json: {
         user: user_response(user),
         token: token,
-        message: 'ログインしました'
+        message: "ログインしました"
       }
     else
-      render json: { error: 'メールアドレスまたはパスワードが正しくありません' }, status: :unauthorized
+      render json: { error: "メールアドレスまたはパスワードが正しくありません" }, status: :unauthorized
     end
   end
 

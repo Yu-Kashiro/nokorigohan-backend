@@ -17,22 +17,22 @@ Rails.application.routes.draw do
       get "ingredients/create"
       get "user_preferences/show"
       get "user_preferences/update"
-      post 'auth/signup', to: 'auth#signup'
-      post 'auth/login', to: 'auth#login'
-      
+      post "auth/signup", to: "auth#signup"
+      post "auth/login", to: "auth#login"
+
       # ユーザー設定
-      resources :user_preferences, only: [:show, :update]
-      
+      resources :user_preferences, only: [ :show, :update ]
+
       # 食材管理
-      resources :ingredients, only: [:index, :show, :create]
-      resources :user_ingredients, only: [:index, :create, :update, :destroy]
-      
+      resources :ingredients, only: [ :index, :show, :create ]
+      resources :user_ingredients, only: [ :index, :create, :update, :destroy ]
+
       # レシピ関連
-      resources :recipes, only: [:index, :show, :create, :destroy]
-      post 'recipes/generate', to: 'recipes#generate'
-      
+      resources :recipes, only: [ :index, :show, :create, :destroy ]
+      post "recipes/generate", to: "recipes#generate"
+
       # 買い出しリスト
-      resources :shopping_lists, only: [:index, :update]
+      resources :shopping_lists, only: [ :index, :update ]
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

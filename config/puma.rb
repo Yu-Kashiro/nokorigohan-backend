@@ -30,9 +30,9 @@ threads threads_count, threads_count
 # Specifies the `port` that Puma will listen on to receive requests.
 # In development, default to 3001; in other environments, keep 3000 unless PORT is set.
 if ENV.fetch("RAILS_ENV", ENV.fetch("RACK_ENV", "development")) == "development"
-	port ENV.fetch("PORT", 3001)
+  port ENV.fetch("PORT", 3001)
 else
-	port ENV.fetch("PORT", 3000)
+  port ENV.fetch("PORT", 3000)
 end
 
 # Allow puma to be restarted by `bin/rails restart` command.

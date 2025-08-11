@@ -1,7 +1,7 @@
 class OpenaiService
   def initialize
     @client = OpenAI::Client.new(
-      access_token: ENV['OPENAI_API_KEY']
+      access_token: ENV["OPENAI_API_KEY"]
     )
   end
 
@@ -9,16 +9,16 @@ class OpenaiService
     # ユーザーの食材をテキスト形式に変換
     ingredients_text = user_ingredients.map do |ui|
       "#{ui.ingredient.name} #{ui.quantity}#{ui.ingredient.unit}"
-    end.join(', ')
+    end.join(", ")
 
     # アレルギー情報を取得
-    allergies = user_preferences.allergies.join(', ') if user_preferences.allergies.any?
-    
+    allergies = user_preferences.allergies.join(", ") if user_preferences.allergies.any?
+
     # 調理器具を取得
-    cooking_tools = user_preferences.cooking_tools.join(', ') if user_preferences.cooking_tools.any?
-    
+    cooking_tools = user_preferences.cooking_tools.join(", ") if user_preferences.cooking_tools.any?
+
     # 調味料を取得
-    seasonings = user_preferences.seasonings.join(', ') if user_preferences.seasonings.any?
+    seasonings = user_preferences.seasonings.join(", ") if user_preferences.seasonings.any?
 
     # 栄養目標を取得
     nutritional_goals = user_preferences.nutritional_goals
@@ -41,7 +41,7 @@ class OpenaiService
             content: "あなたは優秀な料理専門家です。与えられた食材と条件に基づいて、2パターンのレシピを提案してください。必ずJSON形式で回答してください。"
           },
           {
-            role: "user", 
+            role: "user",
             content: prompt
           }
         ],
@@ -102,7 +102,7 @@ class OpenaiService
       - 追加購入不要
       - シンプルで手軽
 
-      パターン2: 栄養バランス最適化レシピ  
+      パターン2: 栄養バランス最適化レシピ#{'  '}
       - 栄養目標に合わせて最適化
       - 必要に応じて追加食材を使用
       - より美味しく栄養価の高いレシピ
@@ -121,7 +121,7 @@ class OpenaiService
           }
         },
         "balanced": {
-          "title": "レシピ名", 
+          "title": "レシピ名",#{' '}
           "cooking_time": 調理時間（分）,
           "instructions": "調理手順を番号付きで詳細に",
           "nutritional_info": {

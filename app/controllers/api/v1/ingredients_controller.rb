@@ -1,6 +1,6 @@
 class Api::V1::IngredientsController < ApplicationController
-  skip_before_action :authorize_request, only: [:index, :show]
-  before_action :set_ingredient, only: [:show]
+  skip_before_action :authorize_request, only: [ :index, :show ]
+  before_action :set_ingredient, only: [ :show ]
 
   def index
     @ingredients = Ingredient.all
@@ -16,11 +16,11 @@ class Api::V1::IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    
+
     if @ingredient.save
       render json: {
         ingredient: @ingredient,
-        message: '食材を追加しました'
+        message: "食材を追加しました"
       }, status: :created
     else
       render json: { errors: @ingredient.errors.full_messages }, status: :unprocessable_entity

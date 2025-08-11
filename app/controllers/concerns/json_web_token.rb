@@ -16,14 +16,14 @@ module JsonWebToken
   end
 
   def http_auth_header
-    if request.headers['Authorization'].present?
-      return request.headers['Authorization'].split(' ').last
+    if request.headers["Authorization"].present?
+      return request.headers["Authorization"].split(" ").last
     end
-    raise ExceptionHandler::MissingToken, 'トークンがありません'
+    raise ExceptionHandler::MissingToken, "トークンがありません"
   end
 
   def user_from_token(user_id)
-    User.find(user_id) || raise(ExceptionHandler::InvalidToken, '無効なトークンです')
+    User.find(user_id) || raise(ExceptionHandler::InvalidToken, "無効なトークンです")
   rescue ActiveRecord::RecordNotFound => e
     raise ExceptionHandler::InvalidToken, e.message
   end

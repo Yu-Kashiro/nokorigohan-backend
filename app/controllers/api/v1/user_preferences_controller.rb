@@ -9,7 +9,7 @@ class Api::V1::UserPreferencesController < ApplicationController
     if @user_preference.update(user_preference_params)
       render json: {
         user_preference: @user_preference,
-        message: '設定を更新しました'
+        message: "設定を更新しました"
       }
     else
       render json: { errors: @user_preference.errors.full_messages }, status: :unprocessable_entity
@@ -25,7 +25,7 @@ class Api::V1::UserPreferencesController < ApplicationController
   def user_preference_params
     params.permit(
       :default_serving_size,
-      nutritional_goals: [:daily_calories, :protein_ratio, :carb_ratio, :fat_ratio],
+      nutritional_goals: [ :daily_calories, :protein_ratio, :carb_ratio, :fat_ratio ],
       allergies: [],
       cooking_tools: [],
       seasonings: []
