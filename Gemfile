@@ -57,4 +57,7 @@ group :development, :test do
   # Testing framework
   gem "rspec-rails"
   gem "factory_bot_rails"
+
+  # Language server for Ruby development
+  gem "solargraph"
 end
