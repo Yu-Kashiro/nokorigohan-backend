@@ -1,0 +1,22 @@
+{
+  // Ruby LSP を有効化
+  "rubyLsp.enableExperimentalFeatures": true,
+
+  // RuboCop による自動フォーマット
+  "rubyLsp.formatter": "rubocop",
+
+  // 保存時に自動フォーマット
+  "editor.formatOnSave": true,
+
+  // RuboCop のリアルタイムチェック
+  "rubyLsp.linters": ["rubocop"],
+
+  // Ruby 固有の設定
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  }
+}
