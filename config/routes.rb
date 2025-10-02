@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :recipes
-      resources :recipe_generations, only: [ :create ]
+      resource :recipe_generations, only: [ :create ]
     end
   end
 end
