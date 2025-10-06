@@ -38,8 +38,8 @@ gem "thruster", require: false
 # OpenAI API client library
 gem "ruby-openai"
 
-gem 'devise'
-gem 'devise-jwt'
+gem "devise"
+gem "devise-jwt"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -52,4 +52,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "dotenv-rails", "~> 2.6"
+
+  gem "pry"
+  gem "pry-byebug"
+  gem "pry-rails"
 end
